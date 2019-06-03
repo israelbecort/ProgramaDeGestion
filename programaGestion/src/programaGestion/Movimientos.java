@@ -1,4 +1,4 @@
-package es.studium.PracticaProT3;
+package programaGestion;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
