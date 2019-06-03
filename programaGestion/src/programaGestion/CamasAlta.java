@@ -89,13 +89,17 @@ public class CamasAlta extends JFrame implements WindowListener, ActionListener
 					String apellido2 = txtEdf.getText();
 					if (nombre.equals("")) {
 						pacientealtaerrornombre.setVisible(true);
+						Log.mov("","Alta cama","");
 					}else if(apellido1.equals("")){
 						citaaltaerrorfecha.setVisible(true);
+						Log.mov("","Alta cama","");
 					}else if(apellido2.equals("")) {
 						servicioaltaerrorprecio.setVisible(true);
+						Log.mov("","Alta cama","");
 					}else {
 						setVisible(false);
 						new PacienteAltaCorrecto();
+						Log.mov("","Alta cama","");
 					}
 				}
 			}

@@ -92,11 +92,14 @@ public class Login extends JFrame implements WindowListener, ActionListener
 					if(usuario.equalsIgnoreCase("Administrador")&&pass.equals("Studium2018;")) {
 						new Principal();
 						setVisible(false);
+						Log.mov(usuario,"Login","");
 					}else if (usuario.equalsIgnoreCase("Usuario")&&pass.equals("Studium2018;")) {
 						new PrincipalUsuario();
 						setVisible(false);
+						Log.mov(usuario,"Login","");
 					}else {
 						loginerror.setVisible(true);
+						Log.mov(usuario,"Login Error","");
 					}
 				}		
 			}
