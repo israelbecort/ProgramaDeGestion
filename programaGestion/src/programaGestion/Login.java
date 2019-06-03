@@ -7,10 +7,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -29,6 +35,14 @@ public class Login extends JFrame implements WindowListener, ActionListener
 	JButton btnLimpiar = new JButton("Limpiar");
 	Button btnOlvide =new Button("Olvidé mi contraseña");
 	
+	//CONECTAR CON BASE DE DATOS----------------------para utilizar por otra base de datos sustituir empresa
+	String driver = "com.mysql.jdbc.Driver";
+	String url = "jdbc:mysql://localhost:3306/hospital?autoReconnect=true&useSSL=false";
+	String login = "root";
+	String password = "Studium2018;";
+	Connection connection = null;
+	Statement statement = null;
+	ResultSet rs = null;
 	//paneles
 	JPanel pnlSup =new JPanel();
 	JPanel pnlCent =new JPanel();
@@ -83,27 +97,72 @@ public class Login extends JFrame implements WindowListener, ActionListener
 			
 			@Override
 			public void actionPerformed(ActionEvent b) {
+				
+				String usuario = null;
+				String pass = null;
+				
 				Object a;
 				a=b.getSource();
-				if(a.equals(btnLogin)) {
-					String usuario=txtUsuario.getText();
-					char[] arrayC=txtContrasena.getPassword();
-					String pass=new String (arrayC);
-					if(usuario.equalsIgnoreCase("Administrador")&&pass.equals("Studium2018;")) {
-						new Principal();
-						setVisible(false);
-						Log.mov(usuario,"Login","");
-					}else if (usuario.equalsIgnoreCase("Usuario")&&pass.equals("Studium2018;")) {
-						new PrincipalUsuario();
-						setVisible(false);
-						Log.mov(usuario,"Login","");
-					}else {
-						loginerror.setVisible(true);
-						Log.mov(usuario,"Login Error","");
+				if(a.equals(btnLogin))
+				{
+					//ESTABLECER CONEXION CON BASE DE DATOS
+					try
+					{
+						connection = DriverManager.getConnection(url, login, password);
 					}
-				}		
-			}
+					catch(SQLException e)
+					{
+						System.out.println("Se produjo un error al conectar a la Base de Datos");
+					}
+					try
+					{
+						char[] arrayC=txtContrasena.getPassword();
+						String clave=new String (arrayC);
+						String cadena ="SELECT * FROM usuarios WHERE nombreUsuario = '"+txtUsuario.getText()+"' AND contrasenaUsuario = MD5('"+clave+"');";
+						
+						statement=connection.createStatement();
+						rs=statement.executeQuery(cadena);
+						
+						while (rs.next())
+						{
+							usuario = rs.getString("nombreUsuario");
+							pass = rs.getString("contrasenaUsuario");
+						}
+					}
+					catch(SQLException e)
+					{
+						System.out.println("Error en la sentencia SQL");
+					}
+					
+					
+					if(usuario.equalsIgnoreCase("Administrador")&& pass.equals(pass)) 
+					{
+
+						JOptionPane.showMessageDialog(null, "Login realizado correctamente.", "Login Correcto", JOptionPane.INFORMATION_MESSAGE);
+						Principal pantallaPri = new Principal();
+						pantallaPri.setVisible(true);
+						Log.mov(usuario,"Login","");
+						setVisible(false);
+
+					} 
+					else if (usuario.equalsIgnoreCase(txtUsuario.getText())&& pass.equals(pass)){
+						{
+							JOptionPane.showMessageDialog(null, "Login realizado correctamente.", "Login Correcto", JOptionPane.INFORMATION_MESSAGE);
+							PrincipalUsuario pantallaUsu = new PrincipalUsuario();
+							pantallaUsu.setVisible(true);
+							Log.mov(usuario,"Login","");
+							setVisible(false);
+						}
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "Error: Usuario o contraseña no validas ","Login Incorrecto",JOptionPane.WARNING_MESSAGE);
+						Log.mov(usuario,"Login ERROR","");
+						System.out.println("Login Incorrecto");
+					}
+				}
+			}	
 		});
+		
 		
 		//boton olvide mi contraseña
 		
@@ -142,7 +201,8 @@ public class Login extends JFrame implements WindowListener, ActionListener
 	@Override
 	public void windowClosing(WindowEvent arg0)
 	{
-		// TODO Auto-generated method stub
+		//cerrar los elementos de la base de datos
+				System.exit(0);
 		
 	}
 	@Override

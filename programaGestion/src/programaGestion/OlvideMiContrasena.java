@@ -6,6 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,6 +27,15 @@ public class OlvideMiContrasena extends JFrame implements WindowListener, Action
 	JLabel lblCorreo = new JLabel("Introduce tu correo electronico:");
 	JTextField txtCorreo=new JTextField(10);
 	JButton btnAceptar= new JButton("Aceptar");
+	
+	//CONECTAR CON BASE DE DATOS----------------------para utilizar por otra base de datos sustituir empresa
+	String driver = "com.mysql.jdbc.Driver";
+	String url = "jdbc:mysql://localhost:3306/hospital?autoReconnect=true&useSSL=false";
+	String login = "root";
+	String password = "Studium2018;";
+	Connection connection = null;
+	Statement statement = null;
+	ResultSet rs = null;
 	
 	JPanel pnlSup = new JPanel();
 	JPanel pnlInf = new JPanel();
@@ -53,15 +67,45 @@ public class OlvideMiContrasena extends JFrame implements WindowListener, Action
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				String email=null;
+				
 				Object a;
 				a=e.getSource();
 				if(a.equals(btnAceptar)) {
+					String cadena ="SELECT * FROM usuarios WHERE correoElectronico = '"+txtCorreo.getText()+"';";
+					
+					//ESTABLECER CONEXION CON BASE DE DATOS
+					try
+					{
+						connection = DriverManager.getConnection(url, login, password);
+					}
+					catch(SQLException arg0)
+					{
+						System.out.println("Se produjo un error al conectar a la Base de Datos");
+					}
+					try
+					{
+						
+						statement=connection.createStatement();
+						rs=statement.executeQuery(cadena);
+						
+						while (rs.next())
+						{
+							email = rs.getString("correoElectronico");
+						}
+					}
+					catch(SQLException arg0)
+					{
+						System.out.println("Error en la sentencia SQL");
+					}
 					String correo=txtCorreo.getText();
-					if (correo.equalsIgnoreCase("prueba@gmail.com")) {
+					if (correo.equalsIgnoreCase(email)) {
+						Log.mov("","Olvide mi contraseña",cadena);
 						setVisible(false);
 						new OlvideCorrecto();
 					}else {
 						olvideincorrecto.setVisible(true);
+						Log.mov("","Olvide mi contraseña ERROR",cadena);
 					}
 				}
 			}

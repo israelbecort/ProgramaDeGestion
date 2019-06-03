@@ -6,10 +6,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -32,6 +38,15 @@ public class PacientesAlta extends JFrame implements WindowListener, ActionListe
 	
 	JPanel pnlSup =new JPanel();
 	JPanel pnlInf =new JPanel();
+	
+	//CONECTAR CON BASE DE DATOS----------------------para utilizar por otra base de datos sustituir empresa
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://localhost:3306/hospital?autoReconnect=true&useSSL=false";
+		String login = "root";
+		String password = "Studium2018;";
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet rs = null;
 	
 	public PacientesAlta(){
 		addWindowListener(this);
@@ -87,13 +102,77 @@ public class PacientesAlta extends JFrame implements WindowListener, ActionListe
 					String nombre =txtNombre.getText();
 					String apellido1 = txtApe1.getText();
 					String apellido2 = txtApe2.getText();
+					//ESTABLECER CONEXION CON BASE DE DATOS
+					try
+					{
+						connection = DriverManager.getConnection(url, login, password);
+					}
+					catch(SQLException arg0)
+					{
+						System.out.println("Se produjo un error al conectar a la Base de Datos");
+					}
+					//PREPARAR EL STATEMENT
+					try
+					{
+						statement=connection.createStatement();
+						rs=statement.executeQuery("SELECT * FROM pacientes;");
+						
+					}
+					catch(SQLException arg0)
+					{
+						System.out.println("Error en la sentencia SQL");
+					}
 					if (nombre.equals("")) {
+						Log.mov("","ERROR Alta","");
 						pacientealtaerrornombre.setVisible(true);
 					}else if(apellido1.equals("")){
+						Log.mov("","ERROR Alta","");
 						pacientealtaerrorape1.setVisible(true);
 					}else if(apellido2.equals("")) {
+						Log.mov("","ERROR Alta","");
 						pacientealtaerrorape2.setVisible(true);
 					}else {
+						String cadena= ("INSERT INTO pacientes (nombrePaciente, apellido1, apellido2) VALUES ('"+nombre+"','"+apellido1+"','"+apellido2+"');");
+						
+						//CARGAR EL DRIVER
+						try
+						{
+							Class.forName(driver);
+						}
+						catch(ClassNotFoundException arg0)
+						{
+							System.out.println("Se ha producido un error al cargar el Driver");
+						}
+						//ESTABLECER CONEXION CON BASE DE DATOS
+						try
+						{
+							connection = DriverManager.getConnection(url, login,password);
+						}
+						catch(SQLException arg0)
+						{
+							System.out.println("Se produjo un error al conectar a la Base de Datos");
+						}
+						//PREPARAR EL STATEMENT
+						try
+						{
+							statement=connection.createStatement();
+							statement.executeUpdate(cadena);
+							if (rs.next())
+							{
+								System.out.println("Alta Correcta");
+								Log.mov("","Alta",cadena);
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "Error: Datos no validos ","Alta Incorrecta",JOptionPane.WARNING_MESSAGE);
+								System.out.println("Alta Incorrecta");
+								Log.mov("","ERROR Alta",cadena);
+							}
+						}
+						catch(SQLException arg0)
+						{
+							System.out.println("Error en la sentencia SQL");
+						}
 						setVisible(false);
 						new PacienteAltaCorrecto();
 					}
