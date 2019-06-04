@@ -98,8 +98,8 @@ public class Login extends JFrame implements WindowListener, ActionListener
 			@Override
 			public void actionPerformed(ActionEvent b) {
 				
-				String usuario = null;
-				String pass = null;
+				String usuario = "";
+				String pass = "";
 				
 				Object a;
 				a=b.getSource();
@@ -133,7 +133,6 @@ public class Login extends JFrame implements WindowListener, ActionListener
 					{
 						System.out.println("Error en la sentencia SQL");
 					}
-					
 					
 					if(usuario.equalsIgnoreCase("Administrador")&& pass.equals(pass)) 
 					{

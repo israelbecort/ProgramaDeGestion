@@ -20,7 +20,7 @@ public class PacienteConsulta extends JFrame implements WindowListener, ActionLi
 	
 	PacienteConsultar pacienteconsultar=new PacienteConsultar(); 
 	
-	List lista=new List(6, false);
+	List lista=new List(4, false);
 	JButton btnBaja=new JButton ("Consulta");
 	
 	JPanel pnlCent = new JPanel();
@@ -30,7 +30,10 @@ public class PacienteConsulta extends JFrame implements WindowListener, ActionLi
 		addWindowListener(this);
 		setTitle ("Consulta paciente");
 		setSize(300,400);
-		lista.add("Juan Gonzalez Martinez");
+		
+		for (int i=0;i<=50;i++) {
+			lista.add("Juan Gonzalez Martinez");
+		}
 		
 		
 		pnlCent.setLayout(new GridLayout(1,1));

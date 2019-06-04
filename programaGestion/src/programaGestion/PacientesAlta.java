@@ -174,6 +174,9 @@ public class PacientesAlta extends JFrame implements WindowListener, ActionListe
 							System.out.println("Error en la sentencia SQL");
 						}
 						setVisible(false);
+						txtNombre.setText("");
+						txtApe1.setText("");
+						txtApe2.setText("");
 						new PacienteAltaCorrecto();
 					}
 				}
