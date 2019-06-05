@@ -22,16 +22,18 @@ public class PacienteModificacion extends JFrame implements WindowListener, Acti
 	PacienteAltaErrorApe2 pacientealtaerrorape2= new PacienteAltaErrorApe2();
 	
 	JLabel lblNombre = new JLabel("Nombre:");
-	JTextField txtNombre = new JTextField(10);
+	static JTextField txtNombre = new JTextField(10);
 	JLabel lblApe1 = new JLabel("Primer apellido:");
-	JTextField txtApe1= new JTextField(10);
+	static JTextField txtApe1= new JTextField(10);
 	JLabel lblApe2=new JLabel("Segundo apellido:");
-	JTextField txtApe2=new JTextField(10);
+	static JTextField txtApe2=new JTextField(10);
 	JButton btnAceptar = new JButton("Aceptar Cambios");
 	JButton btnReset = new JButton("Resetear");
 	
 	JPanel pnlSup =new JPanel();
 	JPanel pnlInf =new JPanel();
+		
+	
 	public PacienteModificacion(){
 		
 		addWindowListener(this);
@@ -65,12 +67,10 @@ public class PacienteModificacion extends JFrame implements WindowListener, Acti
 		add(pnlSup,"North");
 		add(pnlInf,"South");
 		
-		txtNombre.setText("Juan");
-		txtApe1.setText("Gonzalez");
-		txtApe2.setText("Martinez");
-		String nombre =txtNombre.getText();
-		String apellido1 = txtApe1.getText();
-		String apellido2 = txtApe2.getText();
+		
+//		txtNombre.setText("Juan");
+//		txtApe1.setText("Gonzalez");
+//		txtApe2.setText("Martinez");
 		
 		setLocationRelativeTo(null);
 		setLocation(480, 200);
@@ -82,9 +82,10 @@ public class PacienteModificacion extends JFrame implements WindowListener, Acti
 				Object a;
 				a=e.getSource();
 				if (a.equals(btnReset)){
-				txtNombre.setText(nombre);
-				txtApe1.setText(apellido1);
-				txtApe2.setText(apellido2);
+					
+					txtNombre.setText(PacienteModificacionBuscar.nombre);
+					txtApe1.setText(PacienteModificacionBuscar.ape1);
+					txtApe2.setText(PacienteModificacionBuscar.ape2);
 				}
 			}
 		});

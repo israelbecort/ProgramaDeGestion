@@ -40,13 +40,13 @@ public class PacientesAlta extends JFrame implements WindowListener, ActionListe
 	JPanel pnlInf =new JPanel();
 	
 	//CONECTAR CON BASE DE DATOS----------------------para utilizar por otra base de datos sustituir empresa
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/hospital?autoReconnect=true&useSSL=false";
-		String login = "root";
-		String password = "Studium2018;";
-		Connection connection = null;
-		Statement statement = null;
-		ResultSet rs = null;
+	String driver = "com.mysql.jdbc.Driver";
+	String url = "jdbc:mysql://localhost:3306/hospital?autoReconnect=true&useSSL=false";
+	String login = "root";
+	String password = "Studium2018;";
+	Connection connection = null;
+	Statement statement = null;
+	ResultSet rs = null;
 	
 	public PacientesAlta(){
 		addWindowListener(this);
