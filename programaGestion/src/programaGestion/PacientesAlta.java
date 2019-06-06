@@ -164,6 +164,32 @@ public class PacientesAlta extends JFrame implements WindowListener, ActionListe
 						{
 							System.out.println("Error en la sentencia SQL");
 						}
+						try
+						{
+							String cadena1="SELECT * FROM pacientes";
+							
+							statement=connection.createStatement();
+							rs= statement.executeQuery(cadena1);
+							
+							PacienteModificacionBuscar.lista.removeAll();
+							PacienteConsulta.lista.removeAll();
+							PacienteBaja.lista.removeAll();
+
+							while (rs.next())
+							{
+
+								PacienteModificacionBuscar.lista.add(rs.getString("idPaciente")+" "+rs.getString("nombrePaciente")+" "+rs.getString("apellido1")+" "+rs.getString("apellido2"));
+								PacienteConsulta.lista.add(rs.getString("idPaciente")+" "+rs.getString("nombrePaciente")+" "+rs.getString("apellido1")+" "+rs.getString("apellido2"));
+								PacienteBaja.lista.add(rs.getString("idPaciente")+" "+rs.getString("nombrePaciente")+" "+rs.getString("apellido1")+" "+rs.getString("apellido2"));
+							}
+							
+							System.out.println("Consulta Correcta");
+							Log.mov("","Consulta",cadena1);
+						}
+						catch(SQLException arg0)
+						{
+							System.out.println("Error en la sentencia SQL");
+						}
 						setVisible(false);
 						txtNombre.setText("");
 						txtApe1.setText("");

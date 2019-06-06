@@ -47,6 +47,7 @@ public class PacienteModificacionBuscar extends JFrame implements WindowListener
 	static String nombre="";
 	static String ape1="";
 	static String ape2="";
+	static String id="";
 	
 
 	public PacienteModificacionBuscar() {
@@ -95,7 +96,7 @@ public class PacienteModificacionBuscar extends JFrame implements WindowListener
 			while (rs.next())
 			{
 
-				lista.add(rs.getString("nombrePaciente")+" "+rs.getString("apellido1")+" "+rs.getString("apellido2"));
+				lista.add(rs.getString("idPaciente")+" "+rs.getString("nombrePaciente")+" "+rs.getString("apellido1")+" "+rs.getString("apellido2"));
 
 			}
 			
@@ -142,9 +143,10 @@ public class PacienteModificacionBuscar extends JFrame implements WindowListener
 					
 					String select = lista.getSelectedItem();
 					String[] select_splited = select.split(" ");
-					nombre = select_splited[0];
-					ape1 = select_splited[1];
-					ape2 = select_splited[2];
+					id = select_splited[0];
+					nombre = select_splited[1];
+					ape1 = select_splited[2];
+					ape2 = select_splited[3];
 					
 					PacienteModificacion.txtNombre.setText(nombre);
 					PacienteModificacion.txtApe1.setText(ape1);

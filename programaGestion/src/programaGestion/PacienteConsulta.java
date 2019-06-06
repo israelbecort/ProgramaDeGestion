@@ -26,7 +26,7 @@ public class PacienteConsulta extends JFrame implements WindowListener, ActionLi
 
 	PacienteConsultar pacienteconsultar=new PacienteConsultar(); 
 
-	List lista=new List(4, false);
+	static List lista=new List(4, false);
 	JButton btnConsulta=new JButton ("Consulta");
 
 	//CONECTAR CON BASE DE DATOS----------------------para utilizar por otra base de datos sustituir empresa
@@ -86,7 +86,7 @@ public class PacienteConsulta extends JFrame implements WindowListener, ActionLi
 			while (rs.next())
 			{
 
-				lista.add(rs.getString("nombrePaciente")+" "+rs.getString("apellido1")+" "+rs.getString("apellido2"));
+				lista.add(rs.getString("idPaciente")+" "+rs.getString("nombrePaciente")+" "+rs.getString("apellido1")+" "+rs.getString("apellido2"));
 
 			}
 			
@@ -122,9 +122,9 @@ public class PacienteConsulta extends JFrame implements WindowListener, ActionLi
 					
 					String select = lista.getSelectedItem();
 					String[] select_splited = select.split(" ");
-					String nombre = select_splited[0];
-					String ape1 = select_splited[1];
-					String ape2 = select_splited[2];
+					String nombre = select_splited[1];
+					String ape1 = select_splited[2];
+					String ape2 = select_splited[3];
 					
 					PacienteConsultar.txtNombre.setText(nombre);
 					PacienteConsultar.txtApe1.setText(ape1);

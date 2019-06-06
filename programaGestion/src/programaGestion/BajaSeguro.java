@@ -6,10 +6,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class BajaSeguro extends JFrame implements WindowListener, ActionListener
@@ -20,6 +26,15 @@ public class BajaSeguro extends JFrame implements WindowListener, ActionListener
 		JLabel lblIncorrecto = new JLabel("¿Estás seguro que quieres dar de baja a este paciente?");
 		JButton btnSi= new JButton("Sí");
 		JButton btnNo=new JButton("No");
+		
+		//CONECTAR CON BASE DE DATOS----------------------para utilizar por otra base de datos sustituir empresa
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://localhost:3306/hospital?autoReconnect=true&useSSL=false";
+		String login = "root";
+		String password = "Studium2018;";
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet rs = null;
 		
 		JPanel pnlSup = new JPanel();
 		JPanel pnlInf = new JPanel();
@@ -43,23 +58,23 @@ public class BajaSeguro extends JFrame implements WindowListener, ActionListener
 			setLocationRelativeTo(null);
 			setLocation(500, 300);
 			
-			btnSi.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Object a;
-					a=e.getSource();
-					if(a.equals(btnSi)) {
-						pacientebajacorrecto.setVisible(true);
-					}
-					setVisible(false);
-				}
-			});
 			
 			btnNo.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+				}
+			});
+			btnSi.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Object a;
+					a=e.getSource();
+					if(a.equals(btnSi)) {
+
+					}
 					setVisible(false);
 				}
 			});
