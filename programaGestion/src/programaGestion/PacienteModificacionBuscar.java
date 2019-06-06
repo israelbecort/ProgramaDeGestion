@@ -28,7 +28,7 @@ public class PacienteModificacionBuscar extends JFrame implements WindowListener
 	JLabel lblBuscar =new JLabel("Buscar:");
 	JTextField txtBuscar=new JTextField(20);
 	JButton btnBuscar=new JButton("Buscar");
-	List lista=new List(6, false);
+	static List lista=new List(6, false);
 	JButton btnModificar=new JButton ("Modificar");
 
 	//CONECTAR CON BASE DE DATOS----------------------para utilizar por otra base de datos sustituir empresa
@@ -189,6 +189,7 @@ public class PacienteModificacionBuscar extends JFrame implements WindowListener
 				}
 			}
 		});
+		
 	}
 
 	public static void main(String[] args)

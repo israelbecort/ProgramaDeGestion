@@ -16,7 +16,7 @@ public class PacienteModCorrecto extends JFrame implements WindowListener, Actio
 {
 	private static final long serialVersionUID = 1L;
 	JLabel lblIncorrecto = new JLabel("Modificación realizada con éxito.");
-	JButton btnAceptar= new JButton("Aceptar");
+	static JButton btnAceptar= new JButton("Aceptar");
 	
 	JPanel pnlSup = new JPanel();
 	JPanel pnlInf = new JPanel();

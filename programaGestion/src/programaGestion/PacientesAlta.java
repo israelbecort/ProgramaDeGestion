@@ -143,15 +143,6 @@ public class PacientesAlta extends JFrame implements WindowListener, ActionListe
 						{
 							System.out.println("Se ha producido un error al cargar el Driver");
 						}
-						//ESTABLECER CONEXION CON BASE DE DATOS
-						try
-						{
-							connection = DriverManager.getConnection(url, login,password);
-						}
-						catch(SQLException arg0)
-						{
-							System.out.println("Se produjo un error al conectar a la Base de Datos");
-						}
 						//PREPARAR EL STATEMENT
 						try
 						{
