@@ -130,7 +130,7 @@ public class EmpleadosBaja extends JFrame implements WindowListener, ActionListe
 				a=e.getSource();
 				if(a.equals(btnBaja)) {
 					int dialogButton = JOptionPane.YES_NO_OPTION;
-					int dialogResult = JOptionPane.showConfirmDialog (null, "¿Estás seguro de borrar a este paciente?","Warning",dialogButton);
+					int dialogResult = JOptionPane.showConfirmDialog (null, "¿Estás seguro de borrar a este Empleado?","Warning",dialogButton);
 					
 					if(dialogResult == JOptionPane.YES_OPTION){
 						String select = lista.getSelectedItem();

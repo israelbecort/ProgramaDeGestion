@@ -21,11 +21,11 @@ public class CamasConsulta extends JFrame implements WindowListener, ActionListe
 	CamasAltaErrorIdEdf citasaltaerrorhora= new CamasAltaErrorIdEdf();
 	
 	JLabel lblNum = new JLabel("Número cama:");
-	JTextField txtNum = new JTextField(20);
+	static JTextField txtNum = new JTextField(20);
 	JLabel lblPac = new JLabel("idPaciente:");
-	JTextField txtPac= new JTextField(20);
+	static JTextField txtPac= new JTextField(20);
 	JLabel lblEdf=new JLabel("idEdificio:");
-	JTextField txtEdf=new JTextField(20);
+	static JTextField txtEdf=new JTextField(20);
 	JButton btnAceptar = new JButton("Aceptar");
 	
 	JPanel pnlSup =new JPanel();
@@ -62,9 +62,6 @@ public class CamasConsulta extends JFrame implements WindowListener, ActionListe
 		add(pnlSup,"North");
 		add(pnlInf,"South");
 		
-		txtNum.setText("155");
-		txtPac.setText("454");
-		txtEdf.setText("4");
 		
 		txtNum.setEditable(false);
 		txtPac.setEditable(false);

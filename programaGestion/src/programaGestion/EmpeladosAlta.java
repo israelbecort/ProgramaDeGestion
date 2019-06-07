@@ -130,7 +130,7 @@ public class EmpeladosAlta extends JFrame implements WindowListener, ActionListe
 					}else if(apellido2.equals("")) {
 						pacientealtaerrorape2.setVisible(true);
 					}else {
-String cadena= ("INSERT INTO empleados (nombreEmpleado, apellido1, apellido2) VALUES ('"+nombre+"','"+apellido1+"','"+apellido2+"');");
+						String cadena= ("INSERT INTO empleados (nombreEmpleado, apellido1, apellido2) VALUES ('"+nombre+"','"+apellido1+"','"+apellido2+"');");
 						
 						//CARGAR EL DRIVER
 						try
