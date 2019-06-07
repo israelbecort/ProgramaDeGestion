@@ -263,14 +263,41 @@ public class PacienteBaja extends JFrame implements WindowListener, ActionListen
 
 						pacientebajacorrecto.setVisible(true);
 						}
-//					final JOptionPane optionPane = new JOptionPane(
-//						    "The only way to close this dialog is by\n"
-//						    + "pressing one of the following buttons.\n"
-//						    + "Do you understand?",
-//						    JOptionPane.QUESTION_MESSAGE,
-//						    JOptionPane.YES_NO_OPTION);
+				}
+			}
+		});
+		
+		btnBuscar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Object a;
+				a=e.getSource();
+				if(a.equals(btnBuscar)) {
+					String busqueda=txtBuscar.getText();
+					String cadena="SELECT * FROM pacientes WHERE nombrePaciente LIKE '%"+busqueda+"%' OR apellido1 LIKE '%"+busqueda+"%' OR apellido2 LIKE '%"+busqueda+"%'";
 					
-//					bajaseguro.setVisible(true);
+					try
+					{
+						statement=connection.createStatement();
+						rs= statement.executeQuery(cadena);
+						
+						lista.removeAll();
+
+						while (rs.next())
+						{
+
+							lista.add(rs.getString("idPaciente")+" "+rs.getString("nombrePaciente")+" "+rs.getString("apellido1")+" "+rs.getString("apellido2"));
+
+						}
+						
+						System.out.println("Consulta Correcta");
+						Log.mov("","Consulta",cadena);
+					}
+					catch(SQLException arg0)
+					{
+						System.out.println("Error en la sentencia SQL");
+					}
 				}
 			}
 		});

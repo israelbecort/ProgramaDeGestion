@@ -98,7 +98,6 @@ public class PacienteConsulta extends JFrame implements WindowListener, ActionLi
 			System.out.println("Error en la sentencia SQL");
 		}
 
-
 		pnlCent.setLayout(new GridLayout(1,1));
 		pnlCent.add(lista);
 

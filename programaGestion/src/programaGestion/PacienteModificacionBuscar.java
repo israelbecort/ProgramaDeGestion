@@ -165,7 +165,7 @@ public class PacienteModificacionBuscar extends JFrame implements WindowListener
 				a=e.getSource();
 				if(a.equals(btnBuscar)) {
 					String busqueda=txtBuscar.getText();
-					String cadena="SELECT nombrePaciente, apellido1, apellido2 FROM pacientes WHERE nombrePaciente LIKE '%"+busqueda+"%' OR apellido1 LIKE '%"+busqueda+"%' OR apellido2 LIKE '%"+busqueda+"%'";
+					String cadena="SELECT * FROM pacientes WHERE nombrePaciente LIKE '%"+busqueda+"%' OR apellido1 LIKE '%"+busqueda+"%' OR apellido2 LIKE '%"+busqueda+"%'";
 					
 					try
 					{
@@ -177,7 +177,7 @@ public class PacienteModificacionBuscar extends JFrame implements WindowListener
 						while (rs.next())
 						{
 
-							lista.add(rs.getString("nombrePaciente")+" "+rs.getString("apellido1")+" "+rs.getString("apellido2"));
+							lista.add(rs.getString("idPaciente")+" "+rs.getString("nombrePaciente")+" "+rs.getString("apellido1")+" "+rs.getString("apellido2"));
 
 						}
 						

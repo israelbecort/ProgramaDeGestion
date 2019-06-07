@@ -19,11 +19,11 @@ public class EmpleadosConsulta extends JFrame implements WindowListener, ActionL
 	PacienteAltaErrorNombre pacientealtaerrornombre =new PacienteAltaErrorNombre();
 	
 	JLabel lblNombre = new JLabel("Nombre:");
-	JTextField txtNombre = new JTextField(20);
+	static JTextField txtNombre = new JTextField(20);
 	JLabel lblApe1 = new JLabel("Primer apellido:");
-	JTextField txtApe1= new JTextField(20);
+	static JTextField txtApe1= new JTextField(20);
 	JLabel lblApe2=new JLabel("Segundo apellido:");
-	JTextField txtApe2=new JTextField(20);
+	static JTextField txtApe2=new JTextField(20);
 	JButton btnAceptar = new JButton("Aceptar");
 	
 	JPanel pnlSup =new JPanel();
