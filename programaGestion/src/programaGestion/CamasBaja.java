@@ -24,8 +24,6 @@ public class CamasBaja extends JFrame implements WindowListener, ActionListener
 {
 	private static final long serialVersionUID = 1L;
 
-	BajaSeguro bajaseguro =new BajaSeguro();
-
 	JLabel lblBuscar =new JLabel("Buscar:");
 	JTextField txtBuscar=new JTextField(20);
 	JButton btnBuscar=new JButton("Buscar");
@@ -221,7 +219,6 @@ public class CamasBaja extends JFrame implements WindowListener, ActionListener
 						{
 							System.out.println("Error en la sentencia SQL 3");
 						}
-					bajaseguro.setVisible(true);
 					}
 				}
 			}

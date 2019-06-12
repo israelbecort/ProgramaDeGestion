@@ -25,7 +25,6 @@ public class PacienteBaja extends JFrame implements WindowListener, ActionListen
 	private static final long serialVersionUID = 1L;
 
 	PacienteBajaCorrecto pacientebajacorrecto=new PacienteBajaCorrecto(); 
-	BajaSeguro bajaseguro =new BajaSeguro();
 
 	JLabel lblBuscar =new JLabel("Buscar:");
 	JTextField txtBuscar=new JTextField(20);
