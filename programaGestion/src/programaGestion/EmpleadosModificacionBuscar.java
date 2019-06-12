@@ -162,7 +162,7 @@ public class EmpleadosModificacionBuscar extends JFrame implements WindowListene
 				a=e.getSource();
 				if(a.equals(btnBuscar)) {
 					String busqueda=txtBuscar.getText();
-					String cadena="SELECT * FROM pacientes WHERE nombrePaciente LIKE '%"+busqueda+"%' OR apellido1 LIKE '%"+busqueda+"%' OR apellido2 LIKE '%"+busqueda+"%'";
+					String cadena="SELECT * FROM empleados WHERE nombreEmpleado LIKE '%"+busqueda+"%' OR apellido1 LIKE '%"+busqueda+"%' OR apellido2 LIKE '%"+busqueda+"%'";
 					
 					try
 					{
@@ -174,7 +174,7 @@ public class EmpleadosModificacionBuscar extends JFrame implements WindowListene
 						while (rs.next())
 						{
 
-							lista.add(rs.getString("idPaciente")+" "+rs.getString("nombrePaciente")+" "+rs.getString("apellido1")+" "+rs.getString("apellido2"));
+							lista.add(rs.getString("idEmpleado")+" "+rs.getString("nombreEmpleado")+" "+rs.getString("apellido1")+" "+rs.getString("apellido2"));
 
 						}
 						
