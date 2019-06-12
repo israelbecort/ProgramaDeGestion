@@ -1,0 +1,32 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=help.chm
+Contents file=Table of Contents.hhc
+Default topic=index.html
+Display compile progress=No
+Language=0xc0a Español (España, internacional)
+Title=Índice
+
+
+[FILES]
+alta cama.html
+alta empleado.html
+alta paciente.html
+baja cama.html
+baja empleado.html
+baja paciente.html
+consulta cama.html
+consulta empleado.html
+consulta paciente.html
+index.html
+login.html
+modificacion cama.html
+modificacion empleado.html
+modificacion paciente.html
+modificar cama.html
+modificar empleado.html
+modificar paciente.html
+principal.html
+
+[INFOTYPES]
+

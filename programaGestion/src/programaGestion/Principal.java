@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -145,7 +146,12 @@ public class Principal extends JFrame implements WindowListener, ActionListener
 		}else if(a.equals(mniCamasCons)) {
 			citasconsulta.setVisible(true);
 		}else if(a.equals(mniAyudaVerAyuda)) {
-			verayuda.setVisible(true);
+			try {
+				Runtime.getRuntime().exec("hh.exe ayuda/help.chm");
+			}catch (IOException e) {
+				e.printStackTrace();
+				}
+//			verayuda.setVisible(true);
 		}
 		
 	}
