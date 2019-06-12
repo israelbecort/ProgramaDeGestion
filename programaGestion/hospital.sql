@@ -34,7 +34,7 @@ CREATE TABLE `camas` (
   KEY `idEdificioFK` (`idEdificioFK`),
   CONSTRAINT `camas_ibfk_1` FOREIGN KEY (`idPacienteFK`) REFERENCES `pacientes` (`idPaciente`),
   CONSTRAINT `camas_ibfk_2` FOREIGN KEY (`idEdificioFK`) REFERENCES `edificios` (`idEdificio`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `camas` (
 
 LOCK TABLES `camas` WRITE;
 /*!40000 ALTER TABLE `camas` DISABLE KEYS */;
-INSERT INTO `camas` VALUES (1,1,1,1),(2,2,2,2),(3,3,3,3);
+INSERT INTO `camas` VALUES (2,2,2,2),(5,3,2,2);
 /*!40000 ALTER TABLE `camas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,7 +98,7 @@ CREATE TABLE `edificiosempleados` (
 
 LOCK TABLES `edificiosempleados` WRITE;
 /*!40000 ALTER TABLE `edificiosempleados` DISABLE KEYS */;
-INSERT INTO `edificiosempleados` VALUES (1,1,1),(2,2,3),(3,3,2);
+INSERT INTO `edificiosempleados` VALUES (1,1,1),(3,3,2);
 /*!40000 ALTER TABLE `edificiosempleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,13 +112,10 @@ DROP TABLE IF EXISTS `empleados`;
 CREATE TABLE `empleados` (
   `idEmpleado` int(11) NOT NULL AUTO_INCREMENT,
   `nombreEmpleado` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `apellidosEmpleado` varchar(150) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `direccionEmpleado` varchar(150) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `emailEmpleado` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `DNIEmpleado` varchar(9) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `puestoEmpleado` varchar(150) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `apellido1` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `apellido2` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
   PRIMARY KEY (`idEmpleado`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,7 +124,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
-INSERT INTO `empleados` VALUES (1,'francisco','barrera garcia','sembradores, 4, 5ºc','fbarrerag@gmail.com','35487519k','cirujano'),(2,'jorge','martin de los santos','albañiles, 2, BajoºA','jmartin@gmail.com','35485401h','podologo'),(3,'oscar','reina galera','albañiles, 4, 2ºC','oreina@gmail.com','27154730z','pediatra');
+INSERT INTO `empleados` VALUES (1,'francisco','barrera','garcia'),(2,'jorge','martin','de los santos'),(4,'asd','sss','asd');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,14 +139,9 @@ CREATE TABLE `pacientes` (
   `idPaciente` int(11) NOT NULL AUTO_INCREMENT,
   `nombrePaciente` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `apellido1` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `DNIPaciente` varchar(9) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `numSS` int(11) DEFAULT NULL,
-  `direccionPaciente` varchar(150) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `emailPaciente` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `numTelPaciente` int(9) DEFAULT NULL,
   `apellido2` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
   PRIMARY KEY (`idPaciente`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,7 +150,7 @@ CREATE TABLE `pacientes` (
 
 LOCK TABLES `pacientes` WRITE;
 /*!40000 ALTER TABLE `pacientes` DISABLE KEYS */;
-INSERT INTO `pacientes` VALUES (1,'andres','zaragoza','25487415f',1214574584,'agricultores, 2, 3ºA','azaragoza@gmail.com',952458578,'garcia'),(2,'antonio','acal','24896318r',845213568,'estrella canopus, 4, 4ºB','aAcal@gmail.com',954921034,'muñoz'),(3,'francisca','barrera','31658517y',19874523,'corral del moro','fbarrera@gmail.com',954875463,'barragan'),(21,'asd','asd',NULL,NULL,NULL,NULL,NULL,'assd'),(22,'dd','dd',NULL,NULL,NULL,NULL,NULL,'dd'),(23,'1','2',NULL,NULL,NULL,NULL,NULL,'3');
+INSERT INTO `pacientes` VALUES (1,'andres','zaragoza','garcia'),(2,'antonio','morante','muñoz');
 /*!40000 ALTER TABLE `pacientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,4 +189,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-05  0:31:02
+-- Dump completed on 2019-06-12 17:17:38
