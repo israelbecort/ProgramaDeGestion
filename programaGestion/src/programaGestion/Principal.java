@@ -28,8 +28,6 @@ public class Principal extends JFrame implements WindowListener, ActionListener
 	CamasModificacionBuscar citasmod=new CamasModificacionBuscar();
 	CamasBaja citasbaja=new CamasBaja();
 	CamasConsultaBuscar citasconsulta=new CamasConsultaBuscar();
-
-	VerAyuda verayuda=new VerAyuda();
 	
 	// En primer lugar creamos la barra de menú
 	JMenuBar barraMenu = new JMenuBar();
