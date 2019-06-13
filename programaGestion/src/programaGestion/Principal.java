@@ -149,7 +149,6 @@ public class Principal extends JFrame implements WindowListener, ActionListener
 			}catch (IOException e) {
 				e.printStackTrace();
 				}
-//			verayuda.setVisible(true);
 		}
 		
 	}
