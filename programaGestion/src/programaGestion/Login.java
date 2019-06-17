@@ -144,7 +144,7 @@ public class Login extends JFrame implements WindowListener, ActionListener
 						setVisible(false);
 
 					} 
-					else if (usuario.equalsIgnoreCase("")&& pass.equals("")){
+					else if (txtUsuario.getText().equalsIgnoreCase("")&& txtContrasena.getText().equals("")){
 						{
 							JOptionPane.showMessageDialog(null, "Error: Usuario o contraseña no validas ","Login Incorrecto",JOptionPane.WARNING_MESSAGE);
 							Log.mov(usuario,"Login ERROR","");

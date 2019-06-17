@@ -23,7 +23,7 @@ public class CamasAlta extends JFrame implements WindowListener, ActionListener
 {
 
 	private static final long serialVersionUID = 1L;
-	PacienteAltaErrorNombre pacientealtaerrornombre =new PacienteAltaErrorNombre();
+	CamasAltaErrorNum camasaltaerrornum =new CamasAltaErrorNum();
 	CamasAltaErrorIdPac citaaltaerrorfecha= new CamasAltaErrorIdPac();
 	CamasAltaErrorIdEdf servicioaltaerrorprecio= new CamasAltaErrorIdEdf();
 
@@ -125,7 +125,7 @@ public class CamasAlta extends JFrame implements WindowListener, ActionListener
 					}
 					
 					if (num.equals("")) {
-						pacientealtaerrornombre.setVisible(true);
+						camasaltaerrornum.setVisible(true);
 						Log.mov("","Alta cama","");
 					}else if(pac.equals("")){
 						citaaltaerrorfecha.setVisible(true);
